@@ -8,8 +8,6 @@
 #define HEIGHT 600
 #define COLOR 0xFF0000
 
-void draw_grid(SDL_Surface *psurface) {}
-
 void draw_at_grid_coordinates(SDL_Surface *psurface, SDL_Rect *prect,
                               Uint32 color) {
 
@@ -17,6 +15,15 @@ void draw_at_grid_coordinates(SDL_Surface *psurface, SDL_Rect *prect,
   int y_grid = HEIGHT / 2 - prect->y;
   SDL_Rect *shifted_rect = &(SDL_Rect){x_grid, y_grid, prect->w, prect->h};
   SDL_FillRect(psurface, shifted_rect, color);
+}
+
+void draw_grid(SDL_Surface *psurface) {
+  SDL_Rect x_axis;
+  x_axis.x = -WIDTH / 2;
+  x_axis.y = 0;
+  x_axis.w = WIDTH;
+  x_axis.h = 2;
+  draw_at_grid_coordinates(psurface, &x_axis, COLOR);
 }
 
 int main() {
@@ -30,7 +37,7 @@ int main() {
   SDL_Rect rect = (SDL_Rect){50, 50, 50, 50};
 
   draw_at_grid_coordinates(psurface, &rect, COLOR);
-  // draw_grid(psurface);
+  draw_grid(psurface);
 
   SDL_Event event;
   bool app_running = true;
