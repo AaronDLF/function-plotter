@@ -6,7 +6,8 @@
 
 #define WIDTH 900
 #define HEIGHT 600
-#define COLOR 0xFF0000
+#define COLOR 0x0000FF
+#define GRID_COLOR 0xCCCCCC
 
 void draw_at_grid_coordinates(SDL_Surface *psurface, SDL_Rect *prect,
                               Uint32 color) {
@@ -23,7 +24,14 @@ void draw_grid(SDL_Surface *psurface) {
   x_axis.y = 0;
   x_axis.w = WIDTH;
   x_axis.h = 2;
-  draw_at_grid_coordinates(psurface, &x_axis, COLOR);
+  draw_at_grid_coordinates(psurface, &x_axis, GRID_COLOR);
+
+  SDL_Rect y_axis;
+  y_axis.x = 0;
+  y_axis.y = HEIGHT / 2;
+  y_axis.w = 2;
+  y_axis.h = HEIGHT;
+  draw_at_grid_coordinates(psurface, &y_axis, GRID_COLOR);
 }
 
 int main() {
