@@ -14,7 +14,7 @@
 #define X_END 10
 #define Y_START -5
 #define Y_END 5
-#define STEP 0.1
+#define STEP 0.05
 
 void draw_at_grid_coordinates(SDL_Surface *psurface, SDL_Rect *prect,
                               Uint32 color) {
